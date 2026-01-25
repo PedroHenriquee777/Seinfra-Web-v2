@@ -1,64 +1,47 @@
 import { Link } from "@tanstack/react-router";
-import { Home, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ChevronLeftIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function Header() {
-	const [isOpen, setIsOpen] = useState(false);
+interface HeaderProps {
+	Title: string;
+	position?: "fixed" | "relative" | "static";
+}
+
+export function Header({ Title, position = "fixed" }: HeaderProps) {
+	const isRelative = position === "relative";
 
 	return (
-		<>
-			<header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-				<button
-					type="button"
-					onClick={() => setIsOpen(true)}
-					className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-					aria-label="Open menu"
-				>
-					<Menu size={24} />
-				</button>
-				<h1 className="ml-4 text-xl font-semibold">
-					<Link to="/">
-						<img
-							src="/tanstack-word-logo-white.svg"
-							alt="TanStack Logo"
-							className="h-10"
-						/>
-					</Link>
-				</h1>
-			</header>
+		<div
+			className={cn(
+				position === "fixed" && "fixed top-0",
+				position === "relative" && "relative",
+				position === "static" && "static",
+				"flex items-center w-full font-semibold text-[#3ab0b8] z-50",
 
-			<aside
-				className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
-					isOpen ? "translate-x-0" : "-translate-x-full"
-				}`}
+				!isRelative &&
+					"justify-center lg:justify-start lg:gap-12 pt-14 pb-4 lg:px-12",
+
+				isRelative && "justify-start sm:mt-4 gap-4 px-10 py-3 mt-12",
+			)}
+		>
+			<Link
+				to="/"
+				className={cn(
+					"flex items-center",
+					!isRelative && "absolute left-4 lg:static",
+				)}
 			>
-				<div className="flex items-center justify-between p-4 border-b border-gray-700">
-					<h2 className="text-xl font-bold">Navigation</h2>
-					<button
-						type="button"
-						onClick={() => setIsOpen(false)}
-						className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-						aria-label="Close menu"
-					>
-						<X size={24} />
-					</button>
-				</div>
+				<ChevronLeftIcon className="size-6 lg:size-10 text-seinfra-yellow-600" />
+			</Link>
 
-				<nav className="flex-1 p-4 overflow-y-auto">
-					<Link
-						to="/"
-						onClick={() => setIsOpen(false)}
-						className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-						activeProps={{
-							className:
-								"flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2",
-						}}
-					>
-						<Home size={20} />
-						<span className="font-medium">Home</span>
-					</Link>
-				</nav>
-			</aside>
-		</>
+			<h1
+				className={cn(
+					"truncate",
+					isRelative ? "text-xl" : "text-2xl lg:text-3xl",
+				)}
+			>
+				{Title}
+			</h1>
+		</div>
 	);
 }
