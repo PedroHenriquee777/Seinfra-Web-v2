@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export interface Props {
 	Category: string;
 	Local: string;
-	Reference: string;
+	Landmark: string;
 	Problem: string;
 	RequestDate?: string;
 	ConclusionDate?: string;
@@ -16,10 +16,10 @@ export interface Props {
 	ImgURL?: string | undefined;
 }
 
-export function SolicitationCard({
+export function RequestCard({
 	Category,
 	Local,
-	Reference,
+	Landmark,
 	Problem,
 	RequestDate,
 	State,
@@ -157,7 +157,7 @@ export function SolicitationCard({
 										<span className="text-seinfra-blue-light-700-70">
 											Ponto de referência:{" "}
 										</span>
-										{Reference}
+										{Landmark}
 									</h3>
 								</div>
 								<div className="flex flex-col gap-2 text-sm">

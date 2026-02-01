@@ -1,22 +1,22 @@
 export interface CreateRequestPayload {
-    endereco: string;
-    pontoReferencia: string;
-    descricao: string;
+    address: string;
+    landmark: string;
+    description: string;
     imagemUrl?: string;
   }
   
-  export interface ListSolicitationPayload {
+  export interface ListRequestPayload {
     id: number;
-    endereco: string;
-    referencia: string;
-    problema: string;
+    address: string;
+    landmark: string;
+    problem: string;
     status: string;
-    dataSolicitacao: string | null;
-    dataConclusao: string | null;
+    dateRequest: string | null;
+    dateRequestConcluded: string | null;
     solicitante: {
-      nome: string | null;
+      name: string | null;
       cpf: string | null;
-      telefone: string | null;
+      phone: string | null;
     };
     imagemUrl: string;
   }
