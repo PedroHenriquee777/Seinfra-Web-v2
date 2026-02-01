@@ -6,7 +6,7 @@ export const userLoginSchema = z.object({
     .max(14, { message: "CPF invalido" })
     .min(1, { message: "O campo precisa ser preenchido" })
     .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: "CPF inválido" }),
-  senha: z
+  password: z
     .string()
     .min(8, { message: "A senha deve conter no mínimo 8 caracteres" }),
 });
@@ -20,7 +20,7 @@ export const orderRegisterSchema = z.object({
     .string()
     .min(1, { message: "O campo deve ser preenchido" })
     .max(99, { message: "Digite no máximo 100 caracteres." }),
-  reference: z
+  landmark: z
     .string()
     .min(1, { message: "O campo deve ser preenchido" })
     .max(49, { message: "Digite no máximo 50 caracteres." }),
@@ -34,20 +34,20 @@ export const orderRegisterSchema = z.object({
 });
 export const registerSchema = z
   .object({
-    senha: z
+    password: z
       .string()
       .min(8, { message: "A senha deve conter no mínimo 8 caracteres" }),
     confirmPassword: z.string(),
-    nome: z.string().min(1, { message: "O campo deve ser preenchido" }),
-    telefone: z
+    name: z.string().min(1, { message: "O campo deve ser preenchido" }),
+    phone: z
       .string()
       .regex(/^[0-9]{2}\s[0-9]{5}-[0-9]{4}$/, { message: "Numero invalido" }),
     cpf: z
       .string()
       .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: "CPF inválido" }),
   })
-  .superRefine(({ confirmPassword, senha }, ctx) => {
-    if (confirmPassword !== senha) {
+  .superRefine(({ confirmPassword, password }, ctx) => {
+    if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
         message: "As senhas devem ser iguais",
