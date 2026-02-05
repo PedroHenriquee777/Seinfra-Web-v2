@@ -8,7 +8,8 @@ import ConectaSeinfraIcon from "@/assets/ConectaSeinfra.svg";
 import LogoPrefeitura from "@/assets/LogoPrefeitura.svg";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { ErrorDialog } from "@/components/error-dialog";
+import { CreatedRegisterDialog } from "@/components/created-register";
+import { ErrorRegisterDialog } from "@/components/error-register";
 import { LoaderDialog } from "@/components/loader-dialog";
 import PasswordInput from "@/components/password-input";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,7 @@ export function RegisterPage() {
 	const [step, setStep] = useState(0);
 	const [loading, setLoading] = useState(false);
 	const [openError, setOpenError] = useState(false);
+	const [successOpen, setSuccessOpen] = useState(false)
 
 	const navigate = useNavigate();
 	const form = useForm<z.infer<typeof registerSchema>>({
@@ -47,11 +49,12 @@ export function RegisterPage() {
 
 			if (step === 1) {
 				const response = await register({
-					cpf: data.cpf,
+					cpf: data.cpf.replace(/\D/, ""),
 					name: data.name,
 					phone: data.phone,
 					password: data.password,
 				});
+				setSuccessOpen(true)
 				if (response.data.token) {
 					localStorage.setItem("token", response.data.token);
 				} else {
@@ -69,8 +72,8 @@ export function RegisterPage() {
 	return (
 		<div>
 			<LoaderDialog open={loading} />
-			<ErrorDialog open={openError} onOpenChange={setOpenError} />
-      
+			<ErrorRegisterDialog open={openError} onOpenChange={setOpenError} />
+			<CreatedRegisterDialog	open={successOpen} onOpenChange={setSuccessOpen} />
 			<div className="relative flex justify-center items-center flex-col min-h-dvh h-auto font-semibold">
 				<img
 					src={pinkLine}

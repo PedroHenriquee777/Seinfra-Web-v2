@@ -5,7 +5,7 @@ import { RequestCard } from "@/components/request";
 import { cn } from "@/lib/utils";
 import { listRequests } from "@/services/request";
 import type { ListRequestPayload } from "@/services/types/request-types";
-import { extrairCategoria } from "@/lib/constants";
+import { extractCategory } from "@/lib/constants";
 
 export function RequestPage() {
 	const [orders, setOrders] = useState<ListRequestPayload[]>([]);
@@ -41,7 +41,7 @@ export function RequestPage() {
 						orders.map((order) => (
 							<RequestCard
 								key={order.id}
-								Category={extrairCategoria(order.problem)}
+								Category={extractCategory(order.problem)}
 								Local={order.address}
 								Landmark={order.landmark}
 								Problem={order.problem.replace(/^\[.*?\]\s*/, "")}
@@ -49,9 +49,9 @@ export function RequestPage() {
 								ConclusionDate={order.dateRequestConcluded ?? undefined}
 								State={order.status}
 								Time="—"
-								Name={order.solicitante?.name ?? ""}
-								NumberHouse={order.solicitante?.phone ?? ""}
-								CPF={order.solicitante?.cpf ?? ""}
+								Name={order.applicant?.name ?? ""}
+								NumberHouse={order.applicant?.phone ?? ""}
+								CPF={order.applicant?.cpf ?? ""}
 								ImgURL={order.imagemUrl}
 							/>
 						))}

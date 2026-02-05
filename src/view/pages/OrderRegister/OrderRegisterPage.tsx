@@ -31,10 +31,12 @@ import { orderRegisterSchema } from "@/services/zodSchemas";
 import LogoPrefeitura from "./../../../assets/LogoPrefeitura.svg";
 import pinkLine from "./../../../assets/pinkLine.svg";
 import yellowLine from "./../../../assets/yellowLine.svg";
+import { ErrorDialog } from "@/components/error-dialog"
 
 export function OrderRegisterPage() {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [openError, setOpenError] = useState(false)
 	const [successOpen, setSuccessOpen] = useState(false);
 
 	const categories = CATEGORIES;
@@ -65,7 +67,7 @@ export function OrderRegisterPage() {
 			form.reset();
 			setImagePreview(null);
 		} catch (error) {
-			error;
+			setOpenError(true)
 		} finally {
 			setLoading(false);
 		}
@@ -74,6 +76,10 @@ export function OrderRegisterPage() {
 	return (
 		<div>
 			<LoaderDialog open={loading} />
+			<ErrorDialog 
+			open={openError}
+			onOpenChange={setOpenError}
+			/>
 			<CreatedDialog	open={successOpen} onOpenChange={(open) => 
 			{setSuccessOpen(open);
     		if (!open) {
