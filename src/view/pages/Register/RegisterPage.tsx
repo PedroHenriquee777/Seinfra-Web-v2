@@ -49,7 +49,7 @@ export function RegisterPage() {
 
 			if (step === 1) {
 				const response = await register({
-					cpf: data.cpf.replace(/\D/, ""),
+					cpf: data.cpf.replace(/\D/g, ""),
 					name: data.name,
 					phone: data.phone,
 					password: data.password,
