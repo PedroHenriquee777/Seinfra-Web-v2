@@ -1,14 +1,13 @@
 export interface CreateRequestPayload {
     address: string;
-    landmark: string;
+    reference: string;
     description: string;
-    imagemUrl?: string;
   }
   
   export interface ListRequestPayload {
     id: number;
     address: string;
-    landmark: string;
+    reference: string;
     problem: string;
     status: string;
     dateRequest: string | null;
@@ -18,6 +17,5 @@ export interface CreateRequestPayload {
       cpf: string | null;
       phone: string | null;
     };
-    imagemUrl: string;
   }
   

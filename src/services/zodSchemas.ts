@@ -20,11 +20,11 @@ export const orderRegisterSchema = z.object({
     .string()
     .min(1, { message: "O campo deve ser preenchido" })
     .max(99, { message: "Digite no máximo 100 caracteres." }),
-  landmark: z
+  reference: z
     .string()
     .min(1, { message: "O campo deve ser preenchido" })
     .max(49, { message: "Digite no máximo 50 caracteres." }),
-  desc: z
+  description: z
     .string()
     .min(1, { message: "O campo deve ser preenchido" })
     .max(499, { message: "Digite no máximo 500 caracteres." }),

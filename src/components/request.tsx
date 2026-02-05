@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 
 export interface Props {
 	Category: string;
-	Local: string;
-	Landmark: string;
+	Address: string;
+	Reference: string;
 	Problem: string;
 	RequestDate?: string;
 	ConclusionDate?: string;
@@ -18,8 +18,8 @@ export interface Props {
 
 export function RequestCard({
 	Category,
-	Local,
-	Landmark,
+	Address,
+	Reference,
 	Problem,
 	RequestDate,
 	State,
@@ -55,7 +55,7 @@ export function RequestCard({
 								</h1>
 							</div>
 							<div className="flex flex-col gap-2 text-xs md:text-sm">
-								<h3 className="line-clamp-1">Local: {Local}</h3>
+								<h3 className="line-clamp-1">Local: {Address}</h3>
 								<h3 className="line-clamp-1">Problema: {Problem}</h3>
 							</div>
 							<div className="flex flex-col gap-2 text-[0.525rem] md:text-[0.625rem]">
@@ -151,13 +151,13 @@ export function RequestCard({
 										<span className="text-seinfra-blue-light-700-70">
 											Endereço:{" "}
 										</span>
-										{Local}
+										{Address}
 									</h3>
 									<h3>
 										<span className="text-seinfra-blue-light-700-70">
 											Ponto de referência:{" "}
 										</span>
-										{Landmark}
+										{Reference}
 									</h3>
 								</div>
 								<div className="flex flex-col gap-2 text-sm">

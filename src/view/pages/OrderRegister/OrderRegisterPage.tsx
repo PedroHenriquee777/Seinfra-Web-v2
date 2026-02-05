@@ -47,8 +47,8 @@ export function OrderRegisterPage() {
 		defaultValues: {
 			neighborhood: "",
 			street: "",
-			landmark: "",
-			desc: "",
+			reference: "",
+			description: "",
 			category: undefined,
 		},
 		resolver: zodResolver(orderRegisterSchema),
@@ -59,8 +59,8 @@ export function OrderRegisterPage() {
 			setLoading(true);
 			const payload = {
 				address: `${data.street}, ${data.neighborhood}`,
-				landmark: data.landmark,
-				description: `[${data.category}] ${data.desc}`,
+				reference: data.reference,
+				description: `[${data.category}] ${data.description}`,
 			};
 			await createRequest(payload);
 			setSuccessOpen(true);
@@ -195,7 +195,7 @@ export function OrderRegisterPage() {
 
 						<Controller
 							control={form.control}
-							name="landmark"
+							name="reference"
 							render={({ field, fieldState }) => (
 								<Field
 									orientation={"seinfra"}
@@ -214,7 +214,7 @@ export function OrderRegisterPage() {
 
 						<Controller
 							control={form.control}
-							name="desc"
+							name="description"
 							render={({ field, fieldState }) => (
 								<Field
 									orientation={"seinfra"}

@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { listRequests } from "@/services/request";
 import type { ListRequestPayload } from "@/services/types/request-types";
 import { extractCategory } from "@/lib/constants";
+import { formatCPF } from "@/utils/format-cpf";
+import { LoaderDialog } from "@/components/loader-dialog";
 
 export function RequestPage() {
 	const [orders, setOrders] = useState<ListRequestPayload[]>([]);
@@ -14,6 +16,7 @@ export function RequestPage() {
 	useEffect(() => {
 		async function fetchOrders() {
 			try {
+				setLoading(true)
 				const response = await listRequests();
 				setOrders(response.data);
 			} catch (error) {
@@ -28,6 +31,9 @@ export function RequestPage() {
 
 	return (
 		<div>
+			      <LoaderDialog 
+      open={loading}
+      />
 			<Header Title="Minhas Solicitações" />
 			<main
 				className={cn(
@@ -42,8 +48,8 @@ export function RequestPage() {
 							<RequestCard
 								key={order.id}
 								Category={extractCategory(order.problem)}
-								Local={order.address}
-								Landmark={order.landmark}
+								Address={order.address}
+								Reference={order.reference}
 								Problem={order.problem.replace(/^\[.*?\]\s*/, "")}
 								RequestDate={order.dateRequest ?? undefined}
 								ConclusionDate={order.dateRequestConcluded ?? undefined}
@@ -51,8 +57,7 @@ export function RequestPage() {
 								Time="—"
 								Name={order.applicant?.name ?? ""}
 								NumberHouse={order.applicant?.phone ?? ""}
-								CPF={order.applicant?.cpf ?? ""}
-								ImgURL={order.imagemUrl}
+								CPF={order.applicant?.cpf ? formatCPF(order.applicant.cpf) : ""}
 							/>
 						))}
 				</div>
