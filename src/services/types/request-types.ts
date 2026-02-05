@@ -13,7 +13,7 @@ export interface CreateRequestPayload {
     status: string;
     dateRequest: string | null;
     dateRequestConcluded: string | null;
-    solicitante: {
+    applicant: {
       name: string | null;
       cpf: string | null;
       phone: string | null;
