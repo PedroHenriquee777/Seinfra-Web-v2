@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { Header } from "@/components/head";
 import { RequestCard } from "@/components/request";
 import { cn } from "@/lib/utils";
 import { listRequests } from "@/services/request";

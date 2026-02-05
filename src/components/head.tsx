@@ -10,6 +10,7 @@ interface HeaderProps {
 export function Header({ Title, position = "fixed" }: HeaderProps) {
 	const isRelative = position === "relative";
 
+	
 	return (
 		<div
 			className={cn(

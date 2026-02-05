@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import type { z } from "zod";
 import { CreatedDialog } from "@/components/created-dialog";
-import { Header } from "@/components/header";
+import { Header } from "@/components/head";
 import { LoaderDialog } from "@/components/loader-dialog";
 import { Button } from "@/components/ui/button";
 import {
