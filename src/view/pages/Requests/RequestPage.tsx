@@ -56,6 +56,7 @@ export function RequestPage() {
                 Name={order.applicant?.name ?? ""}
                 NumberHouse={order.applicant?.phone ?? ""}
                 CPF={order.applicant?.cpf ? formatCPF(order.applicant.cpf) : ""}
+                
               />
             ))}
         </div>
