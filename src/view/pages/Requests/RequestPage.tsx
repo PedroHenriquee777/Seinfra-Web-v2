@@ -49,8 +49,8 @@ export function RequestPage() {
                 Address={order.address}
                 Reference={order.reference}
                 Problem={order.problem.replace(/^\[.*?\]\s*/, "")}
-                RequestDate={order.dateRequest ?? undefined}
-                ConclusionDate={order.dateRequestConcluded ?? undefined}
+                RequestDate={order.dateRequest}
+                RequestDateConcluded={order.dateRequestConcluded}
                 State={order.status}
                 Time="—"
                 Name={order.applicant?.name ?? ""}
