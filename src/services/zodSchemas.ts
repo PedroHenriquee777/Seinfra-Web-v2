@@ -37,14 +37,24 @@ export const registerSchema = z
     password: z
       .string()
       .min(8, { message: "A senha deve conter no mínimo 8 caracteres" }),
+
     confirmPassword: z.string(),
+
     name: z.string().min(1, { message: "O campo deve ser preenchido" }),
+
     phone: z
       .string()
       .regex(/^[0-9]{2}\s[0-9]{5}-[0-9]{4}$/, { message: "Numero invalido" }),
+
     cpf: z
       .string()
       .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: "CPF inválido" }),
+
+      acceptTerms: z
+      .boolean()
+      .refine((val) => val === true, {
+        message: "Você deve aceitar os termos",
+      }),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
