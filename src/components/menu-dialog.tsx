@@ -30,7 +30,7 @@ export function MenuDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Menu className="absolute right-0 size-10 text-seinfra-blue-light-400 cursor-pointer" />
+        <Menu className="absolute right-6 size-10 text-seinfra-blue-light-400 cursor-pointer" />
       </DialogTrigger>
       <DialogContent className="sm:max-w-md sm:h-40 rounded-3xl border-transparent p-6">
         <DialogHeader>
