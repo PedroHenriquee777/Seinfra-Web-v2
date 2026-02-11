@@ -32,7 +32,7 @@ export function Header({ Title, position = "fixed" }: HeaderProps) {
       <h1
         className={cn(
           "text-xl lg:text-3xl truncate",
-          !Title && "lg:hidden", 
+          !Title && "sm:hidden", 
         )}
       >
         {displayTitle}
