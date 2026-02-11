@@ -36,7 +36,7 @@ export const navItems = [
       "aspect-[5/3] w-component-w sm:w-[40vw] lg:w-[30vw] h-48 lg:h-auto max-h-96",
   },
   {
-    Page: "https://api.whatsapp.com/send?phone=558881677413",
+    Page: "mailto:seinfra@novarussas.ce.gov.br?subject=Solicitação%20de%20Atendimento&body=Olá,%20gostaria%20de%20tirar%20uma%20dúvida: ",
     Desc: "Envie mensagens diretamente para a Secretaria de infraestrutura",
     Icon: Phone,
     Label: "Mensagem Direta",
