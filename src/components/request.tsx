@@ -12,7 +12,7 @@ export interface Props {
   Reference: string;
   Problem: string;
   RequestDate?: string;
-  ConclusionDate?: string;
+  RequestDateConcluded: string;
   State: string;
   Time: string;
   CPF: string;
@@ -27,7 +27,7 @@ export function RequestCard({
   Reference,
   Problem,
   RequestDate,
-  ConclusionDate,
+  RequestDateConcluded,
   State,
   Time,
   CPF,
@@ -165,7 +165,7 @@ export function RequestCard({
                   </h3>
                   <h3>
                     <span className="text-seinfra-blue-light-700-70">
-                      Número:{" "}
+                      Número de telefone:{" "}
                     </span>
                     {NumberHouse}
                   </h3>
@@ -212,12 +212,12 @@ export function RequestCard({
                     </span>
                     {RequestDate}
                   </p>
-                  {State === "Finalizada" && ConclusionDate && (
+                  {RequestDateConcluded && (
                     <p>
                       <span className="text-seinfra-blue-light-700-70">
                         Data de conclusão da solicitação:{" "}
                       </span>
-                      {ConclusionDate}
+                      {RequestDateConcluded}
                     </p>
                   )}
                 </div>

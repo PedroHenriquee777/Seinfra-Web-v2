@@ -10,8 +10,8 @@ export interface CreateRequestPayload {
     reference: string;
     problem: string;
     status: string;
-    dateRequest: string | null;
-    dateRequestConcluded: string | null;
+    dateRequest: string;
+    dateRequestConcluded: string;
     applicant: {
       name: string | null;
       cpf: string | null;
