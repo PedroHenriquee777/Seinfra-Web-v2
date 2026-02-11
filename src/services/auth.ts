@@ -16,6 +16,9 @@ export function register(data: {
   return api.post("/registro", data);
 }
 
+export function logout() {
+  return api.post("/logout")
+}
 
 export function getMe() {
   return api.get("/me")
