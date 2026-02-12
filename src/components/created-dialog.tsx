@@ -1,7 +1,8 @@
 import { CircleCheck } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface CreatedDialogProps {
 	open: boolean;
@@ -12,6 +13,9 @@ export function CreatedDialog({ open, onOpenChange }: CreatedDialogProps) {
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent">
+			<VisuallyHidden>
+          <DialogTitle>seinfra</DialogTitle>
+        </VisuallyHidden>
 				<img
 					src={pinkLine}
 					alt="Linha Rosa Background"
