@@ -135,7 +135,7 @@ export function LoginPage() {
               Não tem uma conta? <br />
               <Link
                 to="/register"
-                className="text-seinfra-yellow-500 hover:text-seinfra-yellow-600 underline"
+                className="cursor-pointer text-seinfra-yellow-500 hover:text-seinfra-yellow-600 underline"
               >
                 Criar conta
               </Link>
