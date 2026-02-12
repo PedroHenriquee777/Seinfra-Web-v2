@@ -31,6 +31,7 @@ export function RegisterPage() {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [openError, setOpenError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -51,21 +52,23 @@ export function RegisterPage() {
       setLoading(true);
 
       if (step === 1) {
-        const response = await register({
+        await register({
           cpf: data.cpf.replace(/\D/g, ""),
           name: data.name,
           phone: data.phone,
           password: data.password,
         });
         setSuccessOpen(true);
-        if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
-        } else {
-          console.log("erro ao registar");
-        }
         navigate({ to: "/login", replace: true });
       }
-    } catch (error) {
+    } catch (err: any) {
+      const msg =
+        err.response?.data?.error ||
+        err.response?.data?.message ||
+        err.message ||
+        "Erro ao fazer registro";
+
+      setErrorMessage(msg);
       setOpenError(true);
     } finally {
       setLoading(false);
@@ -76,6 +79,11 @@ export function RegisterPage() {
     <div>
       <LoaderDialog open={loading} />
       <ErrorRegisterDialog open={openError} onOpenChange={setOpenError} />
+      <ErrorRegisterDialog
+        open={openError}
+        onOpenChange={setOpenError}
+        message={errorMessage}
+      />
       <CreatedRegisterDialog open={successOpen} onOpenChange={setSuccessOpen} />
       <div className="relative flex justify-center items-center flex-col min-h-dvh h-auto font-semibold">
         <img
@@ -220,11 +228,10 @@ export function RegisterPage() {
                               onCheckedChange={(checked) =>
                                 field.onChange(checked === true)
                               }
-							  
                             />
 
                             <div className="text-sm font-normal text-seinfra-blue-light-500 leading-tight">
-                              Ao registrar-se, você concorda com os{" "} <br />
+                              Ao registrar-se, você concorda com os <br />
                               <TermsDialog />
                             </div>
                           </div>
@@ -239,7 +246,6 @@ export function RegisterPage() {
                     />
                     <Button
                       type="submit"
-                      disabled={!form.formState.isValid}
                       className="px-4 py-3 mt-8 rounded-3xl disabled:opacity-50"
                     >
                       Registrar-se
