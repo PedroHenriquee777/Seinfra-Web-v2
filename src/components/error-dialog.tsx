@@ -1,17 +1,15 @@
 import { CircleX } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface ExcludedDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  message?: string;
 }
 
-export function ErrorDialog({ open, onOpenChange }: ExcludedDialogProps) {
+export function ErrorDialog({ open, onOpenChange, message }: ExcludedDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent">
@@ -23,7 +21,7 @@ export function ErrorDialog({ open, onOpenChange }: ExcludedDialogProps) {
 
         <div className="flex justify-center items-center flex-col text-center font-bold text-xl text-seinfra-blue-light-400">
           <CircleX size={100} />
-          <h1>Ocorreu um erro, tente novamente!</h1>
+          <h1>{message || "Ocorreu um erro ao fazer registar a Ordem de Serviço!"}</h1>
         </div>
         <img
           src={yellowLine}

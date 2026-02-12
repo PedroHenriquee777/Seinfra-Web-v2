@@ -43,7 +43,6 @@ export function RequestCard({
   const variant = getVariant(State);
   const isExcluded = State === "Excluída";
 
-  // 🔹 Mesmo padrão do admin
   const statusConfig: Record<
     VariantType,
     {
