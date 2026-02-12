@@ -1,8 +1,15 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import BlueRetangle from "@/assets/blueRetangle.svg";
 import GreenRetangle from "@/assets/greenRetangle.svg";
 import YellowRetangle from "@/assets/yellowRetangle.svg";
 import { cn } from "@/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type VariantType = "newOS" | "OSInProgess" | "default";
 
@@ -68,7 +75,12 @@ export function RequestCard({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className={cn("bg-background rounded-3xl", "flex w-component-w cursor-pointer")}>
+        <div
+          className={cn(
+            "bg-background rounded-3xl",
+            "flex w-component-w cursor-pointer",
+          )}
+        >
           <div
             className={cn(
               "bg-gray-500",
@@ -122,6 +134,12 @@ export function RequestCard({
         )}
         showCloseButton={false}
       >
+        <VisuallyHidden>
+          <DialogTitle>seinfra</DialogTitle>
+          <DialogDescription>
+            Indicador de criação de Ordem de Serviço da aplicação.
+          </DialogDescription>
+        </VisuallyHidden>
         <div className="flex w-full h-full overflow-hidden bg-white gap-2">
           <div
             className={cn(
