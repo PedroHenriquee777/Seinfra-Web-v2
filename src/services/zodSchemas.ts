@@ -4,7 +4,7 @@ export const userLoginSchema = z.object({
   cpf: z
     .string()
     .max(14, { message: "CPF invalido" })
-    .min(1, { message: "O campo precisa ser preenchido" })
+    .min(2, { message: "O campo precisa ser preenchido" })
     .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: "CPF inválido" }),
   password: z
     .string()
@@ -40,7 +40,9 @@ export const registerSchema = z
 
     confirmPassword: z.string(),
 
-    name: z.string().min(1, { message: "O campo deve ser preenchido" }),
+    name: z.string().min(5, { message: "Preencha o campo com seu nome completo." }) 
+    .max(59, { message: "Digite no máximo 60 caracteres." }),
+    
 
     phone: z
       .string()
@@ -53,7 +55,7 @@ export const registerSchema = z
       acceptTerms: z
       .boolean()
       .refine((val) => val === true, {
-        message: "Você deve aceitar os termos",
+        message: "Você deve aceitar os termos para prosseguir",
       }),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
