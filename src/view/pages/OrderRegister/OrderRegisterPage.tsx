@@ -115,10 +115,10 @@ export function OrderRegisterPage() {
                     data-invalid={fieldState.invalid}
                   >
                     <DropdownMenu onOpenChange={setOpen} {...field}>
-                      <DropdownMenuTrigger asChild>
+                      <DropdownMenuTrigger asChild className="cursor-pointer">
                         <Button
                           variant={"outline"}
-                          className="p-4 border-2 border-seinfra-blue-light-200 rounded-2xl py-3 bg-white text-seinfra-blue-light-400 font-bold text-left justify-start hover:bg-transparent focus:bg-transparent hover:text-seinfra-blue-light-400 focus:text-seinfra-blue-light-400 focus:border-seinfra-blue-light-200"
+                          className="p-4 border-2 cursor-pointer border-seinfra-blue-light-200 rounded-2xl py-3 bg-white text-seinfra-blue-light-400 font-bold text-left justify-start hover:bg-transparent focus:bg-transparent hover:text-seinfra-blue-light-400 focus:text-seinfra-blue-light-400 focus:border-seinfra-blue-light-200"
                         >
                           {field.value || "Categoria"}
                           <DropdownMenuShortcut>
@@ -134,7 +134,7 @@ export function OrderRegisterPage() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="start"
-                        className=" border-2 border-seinfra-blue-light-200 rounded-2xl max-w-component-max-w w-component-w cursor-pointer"
+                        className="border-2 border-seinfra-blue-light-200 rounded-2xl max-w-component-max-w w-component-w cursor-pointer"
                       >
                         <DropdownMenuGroup>
                           {categories.map((item) => (
