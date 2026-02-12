@@ -21,7 +21,7 @@ export function RequestPage() {
         const response = await listRequests();
         setOrders(response.data);
       } catch (error) {
-        console.error("Erro ao buscar solicitações", error);
+        error;
       } finally {
         setLoading(false);
       }

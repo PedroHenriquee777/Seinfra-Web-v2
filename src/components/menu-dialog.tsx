@@ -20,7 +20,7 @@ export function MenuDialog() {
     try {
       await logout();
     } catch (error) {
-      console.error(error);
+      error
     } finally {
       navigate({ to: "/login", replace: true });
     }
