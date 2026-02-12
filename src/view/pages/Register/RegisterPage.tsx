@@ -180,7 +180,7 @@ export function RegisterPage() {
                       <FieldError errors={[fieldState.error]} />
                     )}
                     <Button
-                      className="px-4 py-3 mt-14 rounded-3xl"
+                      className="cursor-pointer px-4 py-3 mt-14 rounded-3xl"
                       onClick={async () => {
                         const ok = await form.trigger(["name", "phone", "cpf"]);
                         if (ok) setStep(1);
@@ -256,7 +256,7 @@ export function RegisterPage() {
                     />
                     <Button
                       type="submit"
-                      className="px-4 py-3 mt-8 rounded-3xl disabled:opacity-50"
+                      className="cursor-pointer px-4 py-3 mt-8 rounded-3xl disabled:opacity-50"
                     >
                       Registrar-se
                     </Button>
