@@ -1,7 +1,12 @@
 import { CircleX } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface ExcludedDialogProps {
@@ -20,6 +25,9 @@ export function ErrorLoginDialog({
       <DialogContent className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent">
         <VisuallyHidden>
           <DialogTitle>seinfra</DialogTitle>
+          <DialogDescription>
+            Indicador de erro de login da aplicação.
+          </DialogDescription>
         </VisuallyHidden>
         <img
           src={pinkLine}
