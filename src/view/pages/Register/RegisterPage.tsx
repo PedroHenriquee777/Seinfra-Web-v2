@@ -96,9 +96,20 @@ export function RegisterPage() {
           className="flex gap-8 justify-center items-center flex-col"
         >
           <div className="flex flex-col gap-8 text-center mt-20 w-screen">
-            <Link to="/login" className="z-1 hover:cursor-pointer lg:hidden">
-              <ChevronLeftIcon className="text-seinfra-yellow-400 mx-2 sm:mx-4 size-8" />
-            </Link>
+            {step === 0 ? (
+              <Link to="/login" className="z-1 hover:cursor-pointer lg:hidden">
+                <ChevronLeftIcon className="text-seinfra-yellow-400 mx-2 sm:mx-4 size-8" />
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setStep(0)}
+                className="z-1 hover:cursor-pointer lg:hidden"
+              >
+                <ChevronLeftIcon className="text-seinfra-yellow-400 mx-2 sm:mx-4 size-8" />
+              </button>
+            )}
+
             <div className="flex flex-col gap-8">
               <h1 className="text-5xl text-seinfra-blue-light-700 px-4">
                 Criar conta
