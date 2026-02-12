@@ -13,20 +13,20 @@ export const userLoginSchema = z.object({
 export const orderRegisterSchema = z.object({
   neighborhood: z
     .string()
-    .min(1, { message: "O campo deve ser preenchido" })
+    .min(2, { message: "Por favor, preencha o bairro desejado." })
     .max(49, { message: "Digite no máximo 50 caracteres." }),
 
   street: z
     .string()
-    .min(1, { message: "O campo deve ser preenchido" })
-    .max(99, { message: "Digite no máximo 100 caracteres." }),
+    .min(2, { message: "Por favor, preencha a rua desejada." })
+    .max(49, { message: "Digite no máximo 100 caracteres." }),
   reference: z
     .string()
-    .min(1, { message: "O campo deve ser preenchido" })
+    .min(5, { message: "O campo deve ser preenchido" })
     .max(49, { message: "Digite no máximo 50 caracteres." }),
   description: z
     .string()
-    .min(1, { message: "O campo deve ser preenchido" })
+    .min(5, { message: "Detalhe mais o problema" })
     .max(499, { message: "Digite no máximo 500 caracteres." }),
   category: z.enum(CATEGORIES, {
     message: "Selecione uma categoria",

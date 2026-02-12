@@ -44,7 +44,7 @@ export function MenuDialog() {
                 type="button"
                 variant="link"
                 onClick={handleLogout}
-                className="bg-seinfra-blue-light-300 w-full sm:w-40! h-12! text-xl rounded-2xl font-semibold text-background"
+                className="bg-seinfra-blue-light-300 w-full sm:w-40! h-12! text-xl rounded-2xl font-semibold text-background cursor-pointer"
               >
                 Sair
               </Button>
