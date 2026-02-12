@@ -78,7 +78,6 @@ export function RegisterPage() {
   return (
     <div>
       <LoaderDialog open={loading} />
-      <ErrorRegisterDialog open={openError} onOpenChange={setOpenError} />
       <ErrorRegisterDialog
         open={openError}
         onOpenChange={setOpenError}
