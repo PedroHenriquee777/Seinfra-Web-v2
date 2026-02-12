@@ -1,35 +1,39 @@
 import { Loader } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface LoaderProps {
-	open: boolean;
+  open: boolean;
 }
 
 export function LoaderDialog({ open }: LoaderProps) {
-	return (
-		<Dialog open={open}>
-			<DialogContent
-				className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent"
-				showCloseButton={false}
-			>
-				<img
-					src={pinkLine}
-					alt="Linha Rosa de fundo"
-					className="absolute left-2 -top-0.5 w-23 size-32 scale-x-120 sm:left-2.5 sm:-top-0.5 sm:w-32"
-				/>
+  return (
+    <Dialog open={open}>
+      <DialogContent
+        className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent"
+        showCloseButton={false}
+      >
+        <VisuallyHidden>
+          <DialogTitle>seinfra</DialogTitle>
+        </VisuallyHidden>
+        <img
+          src={pinkLine}
+          alt="Linha Rosa de fundo"
+          className="absolute left-2 -top-0.5 w-23 size-32 scale-x-120 sm:left-2.5 sm:-top-0.5 sm:w-32"
+        />
 
-				<div className="flex justify-center items-center flex-col text-center font-bold text-xl text-seinfra-blue-light-400">
-					<Loader size={100} className="animate-spin" />
-					<h1>Carregando...</h1>
-				</div>
-				<img
-					src={yellowLine}
-					alt="Linha Amarela de fundo"
-					className="absolute right-3.5 -bottom-0.5 w-28 size-30 scale-x-125 sm:right-3.5 sm:-bottom-0.5 sm:w-30 sm:size-35"
-				/>
-			</DialogContent>
-		</Dialog>
-	);
+        <div className="flex justify-center items-center flex-col text-center font-bold text-xl text-seinfra-blue-light-400">
+          <Loader size={100} className="animate-spin" />
+          <h1>Carregando...</h1>
+        </div>
+        <img
+          src={yellowLine}
+          alt="Linha Amarela de fundo"
+          className="absolute right-3.5 -bottom-0.5 w-28 size-30 scale-x-125 sm:right-3.5 sm:-bottom-0.5 sm:w-30 sm:size-35"
+        />
+      </DialogContent>
+    </Dialog>
+  );
 }
