@@ -37,7 +37,6 @@ export function OrderRegisterPage() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [openError, setOpenError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
 
   const categories = CATEGORIES;
@@ -65,18 +64,7 @@ export function OrderRegisterPage() {
       await createRequest(payload);
       setSuccessOpen(true);
       form.reset();
-    } catch (err: any) {
-      const backendError = err.response?.data;
-
-      let msg = "Erro ao registrar uma Ordem de Serviço";
-
-      if (Array.isArray(backendError?.error)) {
-        msg = backendError.error[0]?.message;
-      } else {
-        msg =
-          backendError?.error || backendError?.message || err.message || msg;
-      }
-      setErrorMessage(msg);
+    } catch {
       setOpenError(true);
     } finally {
       setLoading(false);
@@ -89,7 +77,6 @@ export function OrderRegisterPage() {
       <ErrorDialog
         open={openError}
         onOpenChange={setOpenError}
-        message={errorMessage}
       />
       <CreatedDialog
         open={successOpen}
