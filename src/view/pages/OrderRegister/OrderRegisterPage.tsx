@@ -37,10 +37,10 @@ export function OrderRegisterPage() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [openError, setOpenError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
 
   const categories = CATEGORIES;
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof orderRegisterSchema>>({
@@ -65,8 +65,14 @@ export function OrderRegisterPage() {
       await createRequest(payload);
       setSuccessOpen(true);
       form.reset();
-      setImagePreview(null);
-    } catch (error) {
+    } catch (err: any) {
+      const msg =
+        err.response?.data?.error ||
+        err.response?.data?.message ||
+        err.message ||
+        "Erro ao fazer login";
+
+      setErrorMessage(msg);
       setOpenError(true);
     } finally {
       setLoading(false);
@@ -77,6 +83,11 @@ export function OrderRegisterPage() {
     <div>
       <LoaderDialog open={loading} />
       <ErrorDialog open={openError} onOpenChange={setOpenError} />
+      <ErrorDialog
+        open={openError}
+        onOpenChange={setOpenError}
+        message={errorMessage}
+      />
       <CreatedDialog
         open={successOpen}
         onOpenChange={(open) => {
@@ -237,19 +248,6 @@ export function OrderRegisterPage() {
                       )}
                     />
                   </div>
-                  {imagePreview && (
-                    <>
-                      <h1 className="text-seinfra-blue-light-700  font-semibold">
-                        Pré-visualização
-                      </h1>
-                      <div className=" p-4 border-2 max-w-[32vh] max-h-[32vh] rounded-xl border-seinfra-blue-light-200 ">
-                        <div className="flex justify-center">
-                          <img src={imagePreview} alt="pré_visualização_img" />
-                        </div>
-                      </div>
-                    </>
-                  )}
-
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
