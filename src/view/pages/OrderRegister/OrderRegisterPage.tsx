@@ -134,7 +134,7 @@ export function OrderRegisterPage() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="start"
-                        className=" border-2 border-seinfra-blue-light-200 rounded-2xl max-w-component-max-w w-component-w"
+                        className=" border-2 border-seinfra-blue-light-200 rounded-2xl max-w-component-max-w w-component-w cursor-pointer"
                       >
                         <DropdownMenuGroup>
                           {categories.map((item) => (
@@ -242,7 +242,7 @@ export function OrderRegisterPage() {
                     <FieldError errors={[fieldState.error]} />
                   )}
 
-                  <Button type="submit" className="px-4 py-3 mt-8 rounded-3xl">
+                  <Button type="submit" className="cursor-pointer px-4 py-3 mt-8 rounded-3xl">
                     Enviar
                   </Button>
                 </Field>
