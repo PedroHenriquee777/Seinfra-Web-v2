@@ -9,9 +9,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { logout } from "@/services/auth";
 import { useNavigate } from "@tanstack/react-router";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export function MenuDialog() {
   const navigate = useNavigate();
@@ -32,6 +34,11 @@ export function MenuDialog() {
         <Menu className="absolute right-6 size-10 text-seinfra-blue-light-400 cursor-pointer" />
       </DialogTrigger>
       <DialogContent className="sm:max-w-md sm:h-40 rounded-3xl border-transparent p-6">
+      <VisuallyHidden>
+          <DialogDescription>
+            Conteúdo da Ordem de Serviço da aplicação.
+          </DialogDescription>
+        </VisuallyHidden>
         <DialogHeader>
           <DialogTitle className="flex justify-center font-bold text-seinfra-blue-light-400">
             Menu

@@ -137,7 +137,7 @@ export function RequestCard({
         <VisuallyHidden>
           <DialogTitle>seinfra</DialogTitle>
           <DialogDescription>
-            Indicador de criação de Ordem de Serviço da aplicação.
+            Conteúdo da Ordem de Serviço da aplicação.
           </DialogDescription>
         </VisuallyHidden>
         <div className="flex w-full h-full overflow-hidden bg-white gap-2">
