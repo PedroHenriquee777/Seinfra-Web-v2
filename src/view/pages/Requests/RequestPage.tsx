@@ -44,7 +44,7 @@ export function RequestPage() {
         )}
       >
         <Link to="/" className="absolute left-3 lg:static flex items-center">
-          <ChevronLeftIcon className="size-8 lg:size-10 text-seinfra-yellow-600" />
+          <ChevronLeftIcon className="size-8 lg:size-10 text-seinfra-yellow-600 cursor-pointer" />
         </Link>
 
         <h1 className="text-xl lg:text-3xl truncate">Minhas Solicitações</h1>
@@ -58,7 +58,7 @@ export function RequestPage() {
           "pt-30 lg:pt-32",
         )}
       >
-        <div className="flex flex-col justify-center items-center gap-8 mb-20">
+        <div className="flex flex-col justify-center items-center gap-8 mb-20 cursor-pointer">
           {!loading &&
             orders.map((order) => (
               <RequestCard
