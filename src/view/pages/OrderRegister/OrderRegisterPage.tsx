@@ -66,12 +66,16 @@ export function OrderRegisterPage() {
       setSuccessOpen(true);
       form.reset();
     } catch (err: any) {
-      const msg =
-        err.response?.data?.error ||
-        err.response?.data?.message ||
-        err.message ||
-        "Erro ao fazer login";
+      const backendError = err.response?.data;
 
+      let msg = "Erro ao registrar uma Ordem de Serviço";
+
+      if (Array.isArray(backendError?.error)) {
+        msg = backendError.error[0]?.message;
+      } else {
+        msg =
+          backendError?.error || backendError?.message || err.message || msg;
+      }
       setErrorMessage(msg);
       setOpenError(true);
     } finally {
@@ -82,7 +86,6 @@ export function OrderRegisterPage() {
   return (
     <div>
       <LoaderDialog open={loading} />
-      <ErrorDialog open={openError} onOpenChange={setOpenError} />
       <ErrorDialog
         open={openError}
         onOpenChange={setOpenError}
