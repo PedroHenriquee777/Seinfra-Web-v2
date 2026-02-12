@@ -1,7 +1,12 @@
 import { CircleCheck } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface ForwadedDialogProps {
@@ -9,12 +14,18 @@ interface ForwadedDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export function CreatedRegisterDialog({ open, onOpenChange }: ForwadedDialogProps) {
+export function CreatedRegisterDialog({
+  open,
+  onOpenChange,
+}: ForwadedDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="h-84 p-10 sm:max-w-md sm:h-90 sm:p-6 rounded-3xl border-transparent">
-      <VisuallyHidden>
+        <VisuallyHidden>
           <DialogTitle>seinfra</DialogTitle>
+          <DialogDescription>
+            Indicador de criação de registro da aplicação.
+          </DialogDescription>
         </VisuallyHidden>
         <img
           src={pinkLine}

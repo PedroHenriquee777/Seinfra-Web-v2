@@ -1,7 +1,12 @@
 import { Loader } from "lucide-react";
 import pinkLine from "@/assets/pinkLine.svg";
 import yellowLine from "@/assets/yellowLine.svg";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface LoaderProps {
@@ -17,6 +22,9 @@ export function LoaderDialog({ open }: LoaderProps) {
       >
         <VisuallyHidden>
           <DialogTitle>seinfra</DialogTitle>
+          <DialogDescription>
+            Indicador de carregamento da aplicação.
+          </DialogDescription>
         </VisuallyHidden>
         <img
           src={pinkLine}
