@@ -1,4 +1,3 @@
-
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,17 +14,17 @@ import { logout } from "@/services/auth";
 import { useNavigate } from "@tanstack/react-router";
 
 export function MenuDialog() {
- const navigate = useNavigate()
+  const navigate = useNavigate();
 
- async function handleLogout() {
-  try {
-    await logout();
-  } catch (error) {
-    console.error(error);
-  } finally {
-    navigate({ to: "/login", replace: true });
+  async function handleLogout() {
+    try {
+      await logout();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      navigate({ to: "/login", replace: true });
+    }
   }
-}
 
   return (
     <Dialog>
@@ -55,4 +54,4 @@ export function MenuDialog() {
       </DialogContent>
     </Dialog>
   );
-}   
+}
