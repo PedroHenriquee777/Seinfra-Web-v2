@@ -63,7 +63,6 @@ export function LoginPage() {
   return (
     <div>
       <LoaderDialog open={loading} />
-      <ErrorLoginDialog open={openError} onOpenChange={setOpenError} />
       <ErrorLoginDialog
         open={openError}
         onOpenChange={setOpenError}
