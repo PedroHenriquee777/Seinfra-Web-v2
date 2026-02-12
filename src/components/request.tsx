@@ -68,7 +68,7 @@ export function RequestCard({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className={cn("bg-background rounded-3xl", "flex w-component-w")}>
+        <div className={cn("bg-background rounded-3xl", "flex w-component-w cursor-pointer")}>
           <div
             className={cn(
               "bg-gray-500",
